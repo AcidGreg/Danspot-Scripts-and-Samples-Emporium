@@ -130,6 +130,7 @@ if ($O365GroupMembersToRemove.Count -eq 0) {
 # remove members
         Write-Output " ... removing $O365GroupMembersToRemove"
                 foreach ($memberToRemove in $O365GroupMembersToRemove) {
+                        # TODO: Check here if member to be removed is a group owner first. If they are, they should be removed. If they are the only group owner, then a new owner needs to be added first.
                 Remove-UnifiedGroupLinks -Identity $O365GroupID -LinkType Members -Links $memberToRemove.name
         }
 }
